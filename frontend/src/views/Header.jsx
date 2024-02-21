@@ -1,4 +1,5 @@
 import "./Header.css";
+import { FaPlay } from "react-icons/fa";
 export default function Header(props) {
   const handleClick = () => {
     const input = document.getElementById("input");
@@ -43,6 +44,11 @@ export default function Header(props) {
     <>
       <div id="headContainer">
         <div>IoTReady</div>
+
+        <div id="nowPlaying">
+          <FaPlay />
+          <div>{props.files[props.currentAudio]?.name}</div>
+        </div>
         <button onClick={handleClick}>Add</button>
         <input onChange={addAudio} id="input" type="file" accept="audio/*" />
       </div>

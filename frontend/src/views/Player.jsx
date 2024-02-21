@@ -1,4 +1,5 @@
 import "./Player.css";
+
 export default function Player(props) {
   return (
     <>

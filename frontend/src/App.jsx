@@ -17,7 +17,7 @@ function App() {
 
   return (
     <>
-      <Header files={files} setFiles={setFiles} />
+      <Header files={files} currentAudio={currentAudio} setFiles={setFiles} />
       <Playlist
         setCurrentAudio={setCurrentAudio}
         files={files}
