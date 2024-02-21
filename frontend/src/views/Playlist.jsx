@@ -4,14 +4,12 @@ export default function Playlist(props) {
   useEffect(() => {
     const dbOpenRequest = window.indexedDB.open("IndexedDb", 1);
     dbOpenRequest.onsuccess = (e) => {
-      console.log("success");
       const db = e.target.result;
       const tx = db.transaction("audioDb", "readonly");
       const objectStore = tx.objectStore("audioDb");
       let x = [];
       objectStore.openCursor().onsuccess = (cursorEvent) => {
         const cursor = cursorEvent.target.result;
-
         if (cursor) {
           x.push(cursor.value);
           cursor.continue();
@@ -20,7 +18,6 @@ export default function Playlist(props) {
       };
     };
     dbOpenRequest.onupgradeneeded = (e) => {
-      console.log("upgrade needed");
       const db = e.target.result;
       db.createObjectStore("audioDb", {
         keyPath: "name",

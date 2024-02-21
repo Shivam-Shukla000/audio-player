@@ -31,11 +31,8 @@ export default function Header(props) {
 
   const addAudio = (e) => {
     const file = e.target.files[0];
-    console.log(file);
     const fileReader = new FileReader();
     fileReader.onload = (event) => {
-      console.log(file.name);
-      console.log(event.target.result);
       handleFileRead(file.name, event.target.result);
     };
     fileReader.readAsDataURL(file);
