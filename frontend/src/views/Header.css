@@ -1,0 +1,19 @@
+body {
+  font-size: 20px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+#input {
+  display: none;
+}
+#headContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+button {
+  font-size: 24px;
+  padding: 5px 20px;
+  border-radius: 5px;
+}
