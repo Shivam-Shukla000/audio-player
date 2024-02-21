@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+import "./Playlist.css";
 export default function Playlist(props) {
   useEffect(() => {
     const dbOpenRequest = window.indexedDB.open("IndexedDb", 1);
@@ -13,8 +13,6 @@ export default function Playlist(props) {
         const cursor = cursorEvent.target.result;
 
         if (cursor) {
-          console.log(cursor.value);
-          // props.setFiles([...props.files, cursor.value]);
           x.push(cursor.value);
           cursor.continue();
         }
@@ -33,6 +31,7 @@ export default function Playlist(props) {
     };
   }, []);
   const selectAudio = (index) => {
+    localStorage.setItem("playingIndex", index);
     props.setCurrentAudio(index);
   };
   const tracks = props.files.map((audio, index) => (

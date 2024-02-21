@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import "./App.css";
 import Header from "./views/Header";
@@ -8,6 +8,12 @@ import Player from "./views/Player";
 function App() {
   const [files, setFiles] = useState([]);
   const [currentAudio, setCurrentAudio] = useState(0);
+  useEffect(() => {
+    const index = localStorage.getItem("playingIndex");
+    if (index) {
+      setCurrentAudio(index);
+    }
+  }, []);
 
   return (
     <>
