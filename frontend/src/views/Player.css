@@ -5,3 +5,6 @@ audio {
   left: 15%;
   width: 70%;
 }
+.tracks {
+  cursor: pointer;
+}

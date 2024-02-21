@@ -8,13 +8,17 @@ export default function Playlist(props) {
       const db = e.target.result;
       const tx = db.transaction("audioDb", "readonly");
       const objectStore = tx.objectStore("audioDb");
+      let x = [];
       objectStore.openCursor().onsuccess = (cursorEvent) => {
         const cursor = cursorEvent.target.result;
+
         if (cursor) {
           console.log(cursor.value);
-          props.setFiles([...props.files, cursor.value]);
+          // props.setFiles([...props.files, cursor.value]);
+          x.push(cursor.value);
           cursor.continue();
         }
+        props.setFiles(x);
       };
     };
     dbOpenRequest.onupgradeneeded = (e) => {
@@ -31,13 +35,10 @@ export default function Playlist(props) {
   const selectAudio = (index) => {
     props.setCurrentAudio(index);
   };
-  return (
-    <>
-      {props.files.map((audio, index) => (
-        <div className="tracks" key={index} onClick={() => selectAudio(index)}>
-          {audio.name}
-        </div>
-      ))}
-    </>
-  );
+  const tracks = props.files.map((audio, index) => (
+    <div className="tracks" key={index} onClick={() => selectAudio(index)}>
+      {audio.name}
+    </div>
+  ));
+  return <>{tracks}</>;
 }
