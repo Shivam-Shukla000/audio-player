@@ -14,7 +14,7 @@ export default function Playlist(props) {
           x.push(cursor.value);
           cursor.continue();
         }
-        props.setFiles(x);
+        props.setFiles([...x]);
       };
     };
     dbOpenRequest.onupgradeneeded = (e) => {
